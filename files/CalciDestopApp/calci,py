@@ -1,0 +1,101 @@
+from tkinter import *
+
+window = Tk()
+window.config(padx=70, pady=50)
+window.title("Calculator")
+take = Entry(window, width=25, borderwidth=5)
+take.grid(row=0, column=0, columnspan=4)
+def count(number):
+    cueenrt = take.get()
+    take.delete(0, END)
+    take.insert("0",str(cueenrt)+ str(number))
+
+def button_clear():
+    take.delete(0, END)
+
+def add1():
+    first_int = take.get()
+    take.delete(0, END)
+    global f_int 
+    global operator 
+    operator = "+"
+    f_int = int(first_int)
+
+def mult():
+    first_int = take.get()
+    take.delete(0, END)
+    global f_int 
+    global operator 
+    operator = "*"
+    f_int = int(first_int)
+
+def did():
+    first_int = take.get()
+    take.delete(0, END)
+    global f_int 
+    global operator 
+    operator = "/"
+    f_int = int(first_int)
+
+def minu():
+    first_int = take.get()
+    take.delete(0, END)
+    global f_int 
+    global operator 
+    operator = "-"
+    f_int = int(first_int)
+
+def make_add():
+    second_int = take.get()
+    take.delete(0, END)
+    var = f_int
+    if operator == "+": 
+        take.insert(0, var + int(second_int))
+        var += int(second_int)
+    elif operator == "-":
+        take.insert(0, var - int(second_int))
+        var -= int(second_int)
+    elif operator == "*":
+        take.insert(0, var * int(second_int))
+        var *= int(second_int)                                             
+    elif operator == "/":
+        take.insert(0, var / int(second_int))
+        var /= int(second_int)            
+
+
+
+but7 = Button(window,text = "7",width = 3,height = 3,command = lambda: count(7))
+but7.grid(row=1,column=0)
+but8 = Button(window,text = "8",width = 3,height = 3,command = lambda: count(8))
+but8.grid(row=1,column=1)
+but9 = Button(window,text = "9",width = 3,height = 3,command =  lambda: count(9))
+but9.grid(row=1,column=2)
+but6 = Button(window,text = "6",width = 3,height = 3,command = lambda: count(6))
+but6.grid(row=2,column=0)
+but5 = Button(window,text = "5",width = 3,height = 3,command =  lambda: count(5))
+but5.grid(row=2,column=1)
+but4 = Button(window,text = "4",width = 3,height = 3,command = lambda: count(4))
+but4.grid(row=2,column=2)
+but3 = Button(window,text = "3",width = 3,height = 3,command = lambda: count(3))
+but3.grid(row=3,column=0)
+but2 = Button(window,text = "2",width = 3,height = 3,command =  lambda: count(2))
+but2.grid(row=3,column=1)
+but1 = Button(window,text = "1",width = 3,height = 3,command = lambda: count(1))
+but1.grid(row=3,column=2)
+but0 = Button(window,text = "0",width = 3,height = 3,command = lambda: count(0))
+but0.grid(row=4,column=0)
+cle = Button(window,text = "AC",width = 3,height = 3,command =  button_clear)
+cle.grid(row=4,column=1)
+equ = Button(window,text = "=",width = 3,height = 3,command = make_add)
+equ.grid(row=4,column=2)
+add11 = Button(window,text = "+",width = 3,height = 3,command = add1)
+add11.grid(row=1,column=3)
+mull = Button(window,text = "*",width = 3,height = 3,command = mult)
+mull.grid(row=2,column=3)
+div = Button(window,text = "/",width = 3,height = 3,command = did)
+div.grid(row=3,column=3)
+min = Button(window,text = "-",width = 3,height = 3,command = minu)
+min.grid(row=4,column=3)
+
+
+window.mainloop()
